@@ -68,7 +68,56 @@
 
 ---
 
-## 5. open questions / commentary TODO (to be added by research team)
+## 5. Knowledge base records
+
+This briefing's verified facts are recorded in the team knowledge graph (memory Entities + Relations). As of publication, the following entities and relations exist:
+
+**Entities (6):**
+
+1. **NVIDIA** (Company)
+   - Ticker NVDA, NasdaqGS (NMS), market state REGULAR, last price 176.74 USD; Sector: Technology; Industry: Semiconductors; market cap 4267740758016 USD (non-diluted 4078186830000 USD); HQ Santa Clara, CA; 42,000 employees; incorporated 1993.
+   - Institutional ownership: institutionsPercentHeld 0.71384; insidersPercentHeld 0.04006; institutionsFloatPercentHeld 0.74364; institutionsCount 7753.
+   - Segments: Compute & Networking and Graphics; data center scale AI infrastructure company.
+   - Valuation: trailing P/E 22.34387; forward P/E 11.109554; revenue (TTM) 302970011648 USD; net income 192880001024 USD; profit margin 0.63663; dividend rate 1.0 (yield 0.59%); analyst consensus strong_buy (mean 1.32258, 57 opinions).
+   - Top 3 institutional holders (report date 2026-06-30): Blackrock Inc. 1941918386 shares (pctHeld 0.0806, value 343234074725 USD); Vanguard Capital Management LLC 1540816358 shares (pctHeld 0.0639, value 272339291276 USD); State Street Corporation 1009783437 shares (pctHeld 0.0419, value 178479222489 USD).
+
+2. **Attention Is All You Need** (Paper)
+   - arXiv 1706.03762; proposes the Transformer architecture based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+   - Headline MT results (abstract): 28.4 BLEU on WMT 2014 English-to-German (over 2 BLEU better than prior best including ensembles); 41.8 BLEU on WMT 2014 English-to-French (new single-model state of the art, 3.5 days on 8 GPUs).
+   - Model Architecture: encoder stack of N=6 identical layers; decoder stack of N=6 identical layers (third sub-layer: multi-head attention over encoder output).
+   - Scaled Dot-Product Attention: Attention(Q,K,V) = softmax(QK^T / sqrt(d_k)) V; dot products scaled by 1/sqrt(d_k) to avoid small softmax gradients.
+   - Multi-Head Attention: h=8 parallel heads; queries/keys/values linearly projected h times with different learned projections; outputs concatenated and projected with W^O; d_k = d_v = d_model/h = 64.
+   - Other: d_model = 512, d_ff = 2048, residual connections + layer norm, sinusoidal positional encodings.
+
+3. **Transformer** (Architecture)
+   - Sequence transduction architecture from arXiv 1706.03762; encoder-decoder with stacked self-attention and point-wise fully connected layers.
+   - Base model: N=6 encoder layers and N=6 decoder layers; decoder third sub-layer does multi-head attention over encoder output.
+   - Scaled Dot-Product Attention: softmax(QK^T / sqrt(d_k)) V, scaled by 1/sqrt(d_k).
+   - Multi-head: h=8 parallel heads, d_k = d_v = d_model/h = 64, concatenated and projected with W^O.
+   - d_model = 512, d_ff = 2048; residual + layer norm; sinusoidal positional encodings.
+
+4. **Blackrock Inc.** (Institutional Holder)
+   - Top institutional holder of NVIDIA (as reported: "Blackrock Inc."); most recently reported shares: 1941918386. pctHeld 0.0806; value 343234074725 USD; pctChange 0.0085; date reported 1782777600000 (2026-06-30).
+
+5. **Vanguard Capital Management LLC** (Institutional Holder)
+   - Top institutional holder of NVIDIA (as reported: "Vanguard Capital Management LLC"); most recently reported shares: 1540816358. pctHeld 0.0639; value 272339291276 USD; pctChange 0.0015; date reported 1782777600000 (2026-06-30).
+
+6. **State Street Corporation** (Institutional Holder)
+   - Top institutional holder of NVIDIA (as reported: "State Street Corporation"); most recently reported shares: 1009783437. pctHeld 0.0419; value 178479222489 USD; pctChange 0.016; date reported 1782777600000 (2026-06-30).
+
+**Relations (5):**
+
+- Blackrock Inc. —**is a top institutional holder of**→ NVIDIA
+- Vanguard Capital Management LLC —**is a top institutional holder of**→ NVIDIA
+- State Street Corporation —**is a top institutional holder of**→ NVIDIA
+- Attention Is All You Need —**introduces**→ Transformer
+- Transformer —**underpins**→ NVIDIA (NVIDIA's data-center AI business)
+
+*Knowledge graph read back and verified after writing; entities and relations listed above match what is stored.*
+
+---
+
+## 6. open questions / commentary TODO (to be added by research team)
 
 - connective tissue between the 2017 paper's 28.4/41.8 BLEU results and today's data-center AI build-out;
 - inputs, lags, and risks in reading institutional ownership (Blackrock/Vanguard/State Street) as a signal of conviction in NVDA;
